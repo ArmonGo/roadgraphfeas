@@ -6,25 +6,6 @@ from shapely import ops
 from shapely.geometry import LineString, MultiPoint, Point
 from tqdm.auto import tqdm
 
-
-def filter_points_and_targets_by_roads(points, target_ix, features, buffer):
-    points_in_range = MultiPoint([p for p in points if p.within(buffer)])
-    re_ix = list(range(len(target_ix))) # reset the index 
-    points_in_range, ix_in_range = list(
-        zip(
-            *[
-                (p, t)
-                for p, t in zip(points.geoms, re_ix)
-                if points_in_range.distance(p) <= 1e-10
-            ]
-        )
-    ) 
-
-    points_in_range = MultiPoint(points_in_range)
-    features_in_range = features.iloc[list(ix_in_range), :]
-    assert len(points.geoms) == len(re_ix), (len(points.geoms), len(re_ix))
-    return points_in_range, features_in_range
-
 def get_connecting_points(points, roads):
     return MultiPoint([ops.nearest_points(roads, p)[0] for p in points.geoms])
 
