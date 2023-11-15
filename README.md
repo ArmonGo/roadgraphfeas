@@ -8,7 +8,7 @@ For the data sets used as an example, see
 
 https://www.kaggle.com/datasets/ruiqurm/lianjia/
 
-and regarding all public data used in the paper, see: 
+Three publicly available and one proprietary data sets are used in this research. Regarding all public data used in the paper, see: 
 
 https://www.kaggle.com/datasets/ruiqurm/lianjia/
 
